@@ -7,20 +7,19 @@ import BookActions from "../../store/ducks/books";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 
 import NewBook from "../NewBook";
-import UpdateBook from "../UpdateBook";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import styles from "./styles";
 
 class Books extends Component {
   static propTypes = {
-    books: PropTypes.shape({
-      data: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number,
-          title: PropTypes.string
-        })
-      )
-    }).isRequired,
+    // books: PropTypes.shape({
+    //   data: PropTypes.arrayOf(
+    //     PropTypes.shape({
+    //       id: PropTypes.number,
+    //       title: PropTypes.string
+    //     })
+    //   )
+    // }).isRequired,
     isCreateModalOpen: PropTypes.bool,
     isUpdateModalOpen: PropTypes.bool
   };
@@ -74,7 +73,7 @@ class Books extends Component {
         ) : (
           <FlatList
             contentContainerStyle={styles.projectsList}
-            data={books.data}
+            data={books.data || []}
             keyExtractor={item => String(item.id)}
             renderItem={({ item }) => (
               <View style={styles.projectContainer}>
@@ -88,13 +87,6 @@ class Books extends Component {
                     <Icon name="clear" size={28} color="#e04848" />
                     <Text style={styles.projectTitle}>Apagar</Text>
                   </TouchableOpacity>
-                  {/* <TouchableOpacity
-                    onPress={this.toggleUpdateModalOpen(item)}
-                    style={styles.buttonOption}
-                  >
-                    <Icon name="create" size={28} color="#fff" />
-                    <Text style={styles.projectTitle}>Editar</Text>
-                  </TouchableOpacity> */}
                 </View>
               </View>
             )}
@@ -110,10 +102,6 @@ class Books extends Component {
           visible={isCreateModalOpen}
           onRequestClose={this.toggleCreateModalClose}
         />
-        {/* <UpdateBook
-          visible={isUpdateModalOpen}
-          onRequestClose={this.toggleUpdateModalClose}
-        /> */}
       </View>
     );
   }

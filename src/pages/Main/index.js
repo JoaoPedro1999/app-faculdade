@@ -54,7 +54,10 @@ class Main extends Component {
               <Text style={styles.teamTitle}>
                 {activeList ? activeList.name : "Selecione uma lista"}
               </Text>
-              <TouchableOpacity onPress={() => getBooksRequest()}>
+              <TouchableOpacity
+                hitSlop={{ top: 10, botton: 10, left: 10, right: 10 }}
+                onPress={() => getBooksRequest()}
+              >
                 <Icon name="refresh" size={24} color="#fff" />
               </TouchableOpacity>
             </View>
