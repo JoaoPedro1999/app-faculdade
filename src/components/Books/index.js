@@ -12,14 +12,14 @@ import styles from "./styles";
 
 class Books extends Component {
   static propTypes = {
-    // books: PropTypes.shape({
-    //   data: PropTypes.arrayOf(
-    //     PropTypes.shape({
-    //       id: PropTypes.number,
-    //       title: PropTypes.string
-    //     })
-    //   )
-    // }).isRequired,
+    books: PropTypes.shape({
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          title: PropTypes.string
+        })
+      )
+    }).isRequired,
     isCreateModalOpen: PropTypes.bool,
     isUpdateModalOpen: PropTypes.bool
   };
