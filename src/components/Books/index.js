@@ -46,7 +46,7 @@ class Books extends Component {
 
   render() {
     const { books, activeList, deleteBookRequest } = this.props;
-    const { isCreateModalOpen, isUpdateModalOpen } = this.state;
+    const { isCreateModalOpen } = this.state;
 
     if (!activeList) return null;
 
