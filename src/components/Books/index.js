@@ -7,7 +7,6 @@ import BookActions from "../../store/ducks/books";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 
 import NewBook from "../NewBook";
-import UpdateBook from "../UpdateBook";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import styles from "./styles";
 
@@ -22,13 +21,10 @@ class Books extends Component {
       )
     }).isRequired,
     isCreateModalOpen: PropTypes.bool,
-    isUpdateModalOpen: PropTypes.bool
   };
 
   state = {
-    isCreateModalOpen: false,
-    isUpdateModalOpen: false,
-    id_book: null
+    isCreateModalOpen: false
   };
 
   componentDidMount() {
@@ -47,16 +43,6 @@ class Books extends Component {
     this.setState({ isCreateModalOpen: false });
   };
 
-  toggleUpdateModalOpen = item => {
-    this.setState({ isUpdateModalOpen: true });
-    console.log(item);
-    const { selectBook } = this.props;
-    selectBook(item);
-  };
-
-  toggleUpdateModalClose = () => {
-    this.setState({ isUpdateModalOpen: false });
-  };
 
   render() {
     const { books, activeList, deleteBookRequest } = this.props;
@@ -88,13 +74,6 @@ class Books extends Component {
                     <Icon name="clear" size={28} color="#e04848" />
                     <Text style={styles.projectTitle}>Apagar</Text>
                   </TouchableOpacity>
-                  {/* <TouchableOpacity
-                    onPress={this.toggleUpdateModalOpen(item)}
-                    style={styles.buttonOption}
-                  >
-                    <Icon name="create" size={28} color="#fff" />
-                    <Text style={styles.projectTitle}>Editar</Text>
-                  </TouchableOpacity> */}
                 </View>
               </View>
             )}
@@ -109,11 +88,6 @@ class Books extends Component {
         <NewBook
           visible={isCreateModalOpen}
           onRequestClose={this.toggleCreateModalClose}
-        />
-        {/* <UpdateBook
-          visible={isUpdateModalOpen}
-          onRequestClose={this.toggleUpdateModalClose}
-        /> */}
       </View>
     );
   }
